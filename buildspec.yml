@@ -7,11 +7,11 @@ phases:
       - echo "installing dependencies.."
       - npm install
       - npm install -g @angular/cli@14.2.9
-    build:
+  build:
      commands:
        - echo "Building angular project.."
        - ng build --configuration production
-    post_build:
+  post_build:
       commands:
          - echo "updating files in s3 bucket..."
          - aws s3 sync dist/awsproject/ s3://awsproject-2023 --delete
